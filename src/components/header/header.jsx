@@ -48,7 +48,7 @@ export default class PublicHeader extends Component{
             {
               this.state.navState && <aside key='nav-slide' className="nav-slide-list" onClick={this.toggleNav}>
                 <NavLink to="/" exact className="nav-link icon-jiantou-copy-copy">首页</NavLink>
-                <NavLink to="/brokerage" exact className="nav-link icon-jiantou-copy-copy">提现</NavLink>
+                <NavLink to="/balance" exact className="nav-link icon-jiantou-copy-copy">提现</NavLink>
                 <NavLink to="/helpcenter" exact className="nav-link icon-jiantou-copy-copy">帮助中心</NavLink>
               </aside>
             }

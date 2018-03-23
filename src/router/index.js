@@ -3,15 +3,19 @@ import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import asyncComponent from '@/utils/asyncComponent';
 
 import home from "@/pages/home/home";
-const record = asyncComponent(() => import("@/pages/record/record"));
-const helpcenter = asyncComponent(() => import("@/pages/helpcenter/helpcenter"));
-const production = asyncComponent(() => import("@/pages/production/production"));
-const balance = asyncComponent(() => import("@/pages/balance/balance"));
+
+// https://segmentfault.com/a/1190000010067597
+// asyncComponent 异步加载组件，打包会分割
+const record = asyncComponent(() => import("@/pages/record/record")); // 记录
+const helpcenter = asyncComponent(() => import("@/pages/helpcenter/helpcenter")); // 帮助中心
+const production = asyncComponent(() => import("@/pages/production/production")); // 选择销售产品
+const balance = asyncComponent(() => import("@/pages/balance/balance")); // 提现
 
 // react-router4 不再推荐将所有路由规则放在同一个地方集中式路由，子路由应该由父组件动态配置，组件在哪里匹配就在哪里渲染，更加灵活
 export default class RouteConfig extends Component{
   render(){
     return(
+      /* "/" 制定exact后，"/record" 等其它路由就不会再匹配到"/"了 */
       <HashRouter>
         <Switch>
           <Route path="/" exact component={home} />
