@@ -13,7 +13,7 @@ export default class PublicHeader extends Component{
   }
 
   state = {
-    navState: false, //导航栏是否显示
+    navState: false, //左侧导航栏显示标志
   };
   
   // 切换左侧导航栏状态
@@ -26,7 +26,7 @@ export default class PublicHeader extends Component{
     return childrenArray[0] || null;
   }
   shouldComponentUpdate(nextProps, nextState) {
-    return !is(fromJS(this.props), fromJS(nextProps))|| !is(fromJS(this.state),fromJS(nextState))
+    return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
   }
 
   render(){
@@ -35,25 +35,28 @@ export default class PublicHeader extends Component{
         <span className="header-slide-icon icon-catalog" onClick={this.toggleNav}></span>
         <span className="header-title">{this.props.title}</span>
         {
-          this.props.record&&<NavLink to="/record" exact className="header-link icon-jilu"></NavLink>
+          this.props.record &&
+            <NavLink to="/record" exact className="header-link icon-jilu"></NavLink>
         }
         {
-          this.props.confirm&&<NavLink to="/" exact className="header-link header-link-confim">确定</NavLink>
+          this.props.confirm &&
+            <NavLink to="/" exact className="header-link header-link-confim">确定</NavLink>
         }
         <ReactCSSTransitionGroup
+          // 默认情况下 ReactTransitionGroup 渲染为一个 span， 可以通过提供一个 component prop 来改变这种行为， 如component="ul"；这里使用当前子组件aside代替
           component={this.FirstChild}
           transitionName="nav"
           transitionEnterTimeout={300}
           transitionLeaveTimeout={300}>
             {
-              this.state.navState && <aside key='nav-slide' className="nav-slide-list" onClick={this.toggleNav}>
-                <NavLink to="/" exact className="nav-link icon-jiantou-copy-copy">首页</NavLink>
-                <NavLink to="/balance" exact className="nav-link icon-jiantou-copy-copy">提现</NavLink>
-                <NavLink to="/helpcenter" exact className="nav-link icon-jiantou-copy-copy">帮助中心</NavLink>
-              </aside>
+              this.state.navState && 
+                <aside key='nav-slide' className="nav-slide-list" onClick={this.toggleNav}>
+                  <NavLink to="/" exact className="nav-link icon-jiantou-copy-copy">首页</NavLink>
+                  <NavLink to="/balance" exact className="nav-link icon-jiantou-copy-copy">提现</NavLink>
+                  <NavLink to="/helpcenter" exact className="nav-link icon-jiantou-copy-copy">帮助中心</NavLink>
+                </aside>
             }
         </ReactCSSTransitionGroup>
-        
       </header>
     );
   }

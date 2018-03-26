@@ -6,14 +6,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 // @remove-on-eject-end
-'use strict';
+
 
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 process.env.STATIC_ENV = 'production';
 if(process.env.STATIC_ENV === 'production'){
-  process.env.PUBLIC_URL = '/pxq';
+  process.env.PUBLIC_URL = '/dist';
 }
 
 // Makes the script crash on unhandled rejections instead of silently
