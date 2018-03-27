@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { is, fromJS } from 'immutable';
 import { connect } from 'react-redux';
-import { getProData, togSelectPro, editPro } from '@/store/production/action';
+import { actions as proActions } from '@/store/production'
 import PropTypes from 'prop-types';
 import PublicHeader from '@/components/header/header';
 import './production.css';
+
+const { getProData, togSelectPro, editPro } = proActions
 
 class Production extends Component{
   static propTypes = {

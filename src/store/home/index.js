@@ -31,7 +31,7 @@ export const actions = {
 	}
 }
 
-let defaultState = {
+const defaultState = {
 	orderSum: '', //金额
 	name: '', //姓名
 	phoneNo: '', //手机号
