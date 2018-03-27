@@ -5,7 +5,7 @@ import { is, fromJS } from 'immutable';
 import PropTypes from 'prop-types';
 import API from '@/api/api';
 import envconfig from '@/envconfig/envconfig';
-import { saveFormData, saveImg, clearData } from '@/store/home/action';
+import { actions } from '@/store/home/index.js';
 import { clearSelected } from '@/store/production/action';
 import PublicHeader from '@/components/header/header';
 import PublicAlert from '@/components/alert/alert';
@@ -13,8 +13,11 @@ import TouchableOpacity from '@/components/TouchableOpacity/TouchableOpacity';
 import mixin, { padStr } from '@/utils/mixin';
 import './home.css';
 
+const {saveFormData, saveImg, clearData} = actions
+
 @mixin({padStr})
 class Home extends Component {
+  // 类型检查
   static propTypes = {
     formData: PropTypes.object.isRequired,
     saveFormData: PropTypes.func.isRequired,
@@ -171,7 +174,16 @@ class Home extends Component {
     );
   }
 }
-
+/**
+ * connect(mapStateToProps, mapDispatchToProps, mergeProps, options)
+ * mapStateToProps: store, 以下是取当前组件中使用到的state
+ * mapDispatchToProps: actions
+ * mergeProps: [mergeProps(stateProps, dispatchProps, ownProps): props]
+ * 不管是 stateProps 还是 dispatchProps，都需要和 ownProps merge 之后才会
+ * 被赋给当前组件。通常情况下，可以不传connect 就会使用 Object.assign 替代该方法。
+ * options: 一般用不上
+ * 见：http://taobaofed.org/blog/2016/08/18/react-redux-connect/
+ */
 export default connect(state => ({
   formData: state.formData,
   proData: state.proData,

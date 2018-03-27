@@ -6,7 +6,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 // @remove-on-eject-end
-'use strict';
 
 const autoprefixer = require('autoprefixer');
 const path = require('path');
@@ -21,6 +20,26 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const px2rem = require('postcss-px2rem');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+const plugins = [
+  // Moment.js is an extremely popular library that bundles large locale files
+  // by default due to how Webpack interprets its code. This is a practical
+  // solution that requires the user to opt into importing specific locales.
+  // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
+  // You can remove this if you don't use Moment.js:
+  new webpack.IgnorePlugin(/redux-logger/),
+  new webpack.ContextReplacementPlugin(
+    // 需要被处理的文件目录位置
+    /moment[\/\\]locale/,
+    // 正则匹配需要被包括进来的文件
+    /(en|zh-cn)\.js/
+  )
+]
+
+if (process.env.npm_config_report) {
+  plugins.push(new BundleAnalyzerPlugin())
+}
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -358,12 +377,7 @@ module.exports = {
       // Don't precache sourcemaps (they're large) and build asset manifest:
       staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
     }),
-    // Moment.js is an extremely popular library that bundles large locale files
-    // by default due to how Webpack interprets its code. This is a practical
-    // solution that requires the user to opt into importing specific locales.
-    // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
-    // You can remove this if you don't use Moment.js:
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    ...plugins
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
