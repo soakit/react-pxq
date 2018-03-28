@@ -8,17 +8,13 @@
 
 4. 发布gh-pages页, [Visit](https://soakit.github.io/react-pxq/#/)
 
+5. 去掉fastclick
+
 #### TODO
 
 1. babel-polyfill优化
 
-2. immutable优化？
-
-3. fastclick是否必要？
-
-4. history是啥？
-
-5. react相关升级
+2. react剥离出来
 
 ## 技术栈：
   react + redux + webpack + react-router + ES6/7/8 + immutable
