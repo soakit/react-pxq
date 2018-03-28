@@ -94,7 +94,7 @@ class Home extends Component {
 		})
 	}
 
-	// 关闭弹款
+	// 关闭弹框
 	closeAlert = () => {
 		this.setState({
 			alertStatus: false,

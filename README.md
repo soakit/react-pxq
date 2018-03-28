@@ -1,5 +1,24 @@
+## 优化
 
-[Visit Demo](https://soakit.github.io/react-pxq/#/)
+1. `npm run build --report` 进行包分析
+
+2. 开发时增加redux-logger，打包时忽略此包
+
+3. 重写store的写法
+
+4. 发布gh-pages页, [Visit](https://soakit.github.io/react-pxq/#/)
+
+#### TODO
+
+1. babel-polyfill优化
+
+2. immutable优化？
+
+3. fastclick是否必要？
+
+4. history是啥？
+
+5. react相关升级
 
 ## 技术栈：
   react + redux + webpack + react-router + ES6/7/8 + immutable
