@@ -14,6 +14,7 @@ process.env.NODE_ENV = 'production';
 process.env.STATIC_ENV = 'production';
 if(process.env.STATIC_ENV === 'production'){
   process.env.PUBLIC_URL = '/dist';
+  process.env.ROOT_PATH = '/react-pxq/';
 }
 
 // Makes the script crash on unhandled rejections instead of silently
