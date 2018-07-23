@@ -3,7 +3,6 @@ import Server from './server'
 class API extends Server {
 	/**
 	 *  用途：上传图片
-	 *  @url http://cangdu.org:8001/v1/addimg/shop
 	 *  返回status为1表示成功
 	 *  @method post
 	 *  @return {promise}
@@ -12,7 +11,7 @@ class API extends Server {
 		try {
 			let result = await this.axios(
 				'post',
-				'http://cangdu.org:8001/v1/addimg/shop',
+				'http://elm.cangdu.org/v1/addimg/shop',
 				params
 			)
 			if (result && result.status === 1) {
@@ -22,7 +21,7 @@ class API extends Server {
 					tip: '上传图片失败',
 					response: result,
 					data: params,
-					url: 'http://cangdu.org:8001/v1/addimg/shop'
+					url: 'http://elm.cangdu.org/v1/addimg/shop'
 				}
 				throw err
 			}
@@ -33,7 +32,6 @@ class API extends Server {
 
 	/**
 	 *  用途：获取记录数据
-	 *  @url http://cangdu.org/shopro/data/record
 	 *  返回http_code为200表示成功
 	 *  @method get
 	 *  @return {promise}
@@ -48,7 +46,7 @@ class API extends Server {
 					tip: '获取记录数据失败',
 					response: result,
 					data: params,
-					url: 'http://cangdu.org/shopro/data/record'
+					url: 'http://api.cangdu.org/shopro/data/record'
 				}
 				throw err
 			}
@@ -59,7 +57,6 @@ class API extends Server {
 
 	/**
 	 *  用途：获取商品数据
-	 *  @url http://cangdu.org/shopro/data/products
 	 *  返回http_code为200表示成功
 	 *  @method get
 	 *  @return {promise}
@@ -74,7 +71,7 @@ class API extends Server {
 					tip: '获取商品数据失败',
 					response: result,
 					data: params,
-					url: 'http://cangdu.org/shopro/data/products'
+					url: 'http://api.cangdu.org/shopro/data/products'
 				}
 				throw err
 			}
@@ -85,7 +82,6 @@ class API extends Server {
 
 	/**
 	 *  用途：获取佣金数据
-	 *  @url http://cangdu.org/shopro/data/balance
 	 *  返回http_code为200表示成功
 	 *  @method get
 	 *  @return {promise}
@@ -100,7 +96,7 @@ class API extends Server {
 					tip: '获取佣金数据失败',
 					response: result,
 					data: params,
-					url: 'http://cangdu.org/shopro/data/balance'
+					url: 'http://api.cangdu.org/shopro/data/balance'
 				}
 				throw err
 			}
