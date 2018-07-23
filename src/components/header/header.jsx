@@ -3,7 +3,7 @@ import { is, fromJS } from 'immutable'
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import './header.css'
+import './header.less'
 
 export default class PublicHeader extends Component {
 	static propTypes = {

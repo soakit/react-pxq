@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { actions as proActions } from '@/store/production'
 import PropTypes from 'prop-types'
 import PublicHeader from '@/components/header/header'
-import './production.css'
+import './production.less'
 
 const { getProData, togSelectPro, editPro } = proActions
 
